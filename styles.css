@@ -1,0 +1,395 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-dark: #0a0a12;
+  --accent: #ff6b35;
+  --accent-glow: rgba(255, 107, 53, 0.5);
+  --gold: #f4d03f;
+  --gold-dim: rgba(244, 208, 63, 0.3);
+  --purple: #a855f7;
+  --purple-bright: #c084fc;
+  --purple-glow: rgba(168, 85, 247, 0.5);
+  --purple-dim: rgba(168, 85, 247, 0.25);
+  --text: #f0f0f5;
+  --text-muted: rgba(240, 240, 245, 0.7);
+  --card-bg: rgba(20, 20, 35, 0.75);
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Sarabun', 'Prompt', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--text);
+  position: relative;
+}
+
+/* พื้นหลัง — ใส่ path รูปเกมที่ .game-bg */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* พื้นหลัง: ใส่รูปเกมชื่อ game-bg.jpg ในโฟลเดอร์นี้ (ถ้าไม่มีจะใช้ gradient ด้านล่าง) */
+.game-bg {
+  background: var(--bg-dark);
+  background-image:
+    url('game-bg.jpg'),
+    radial-gradient(ellipse 120% 80% at 50% 20%, rgba(255, 107, 53, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 100% at 50% 100%, rgba(20, 10, 40, 0.9) 0%, var(--bg-dark) 70%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: normal, overlay, normal;
+}
+
+.overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 10, 18, 0.4) 0%,
+    rgba(10, 10, 18, 0.75) 40%,
+    rgba(10, 10, 18, 0.92) 100%
+  );
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+/* โลโก้ */
+.logo-wrap {
+  margin-bottom: 3rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.logo-img {
+  max-height: 120px;
+  width: auto;
+  max-width: 280px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 24px var(--accent-glow));
+}
+
+.logo-text {
+  display: none;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.25rem, 8vw, 4rem);
+  letter-spacing: 0.02em;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--accent) 50%, var(--gold) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+.tagline {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.description {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  max-width: 420px;
+  margin: 1rem auto 0;
+  line-height: 1.6;
+}
+
+/* Countdown */
+.countdown-section {
+  width: 100%;
+  max-width: 720px;
+}
+
+.countdown-title {
+  font-family: 'Prompt', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.2em;
+}
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.countdown-item {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.countdown-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 24px var(--purple-dim);
+}
+
+.countdown-value {
+  display: block;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  line-height: 1.2;
+  color: var(--purple-bright);
+  text-shadow: 0 0 20px var(--purple-dim);
+}
+
+.countdown-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+  display: block;
+}
+
+.release-time {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* ปุ่มเข้าเว็บเกม — เปลี่ยน href ใน index.html เป็นลิงก์จริง */
+.btn-game-wrap {
+  margin-top: 2.5rem;
+}
+
+.btn-game {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2.25rem;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, var(--purple) 0%, #7c3aed 50%, var(--purple) 100%);
+  background-size: 200% auto;
+  border: none;
+  border-radius: 999px;
+  box-shadow: 0 4px 24px var(--purple-glow), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.25s ease, background-position 0.4s ease;
+}
+
+.btn-game:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 32px var(--purple-glow), 0 0 40px var(--purple-dim);
+  background-position: 100% center;
+}
+
+.btn-game:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-game svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+/* จอแจม — สไตล์ error/ไวรัส เต็มจอ */
+.jam-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.jam-screen.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* จอ error แบบเต็มจอ เหมือนโดนไวรัส */
+.jam-error .jam-error-bg {
+  position: absolute;
+  inset: 0;
+  background: #0a0a1a;
+  background-image: radial-gradient(ellipse 100% 80% at 50% 20%, rgba(180, 0, 0, 0.25) 0%, transparent 50%);
+}
+
+.jam-error .jam-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem;
+  max-width: 90vw;
+  transform: scale(0.95);
+  opacity: 0;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.jam-screen.is-active .jam-error-content {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.jam-error-icon {
+  font-size: 4rem;
+  color: #ff3333;
+  text-shadow: 0 0 30px rgba(255, 51, 51, 0.8);
+  margin-bottom: 0.5rem;
+  animation: jam-error-blink 0.8s ease-in-out infinite;
+}
+
+@keyframes jam-error-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.jam-error-title {
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: clamp(1.25rem, 4vw, 1.75rem);
+  font-weight: 700;
+  color: #ff4444;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 20px rgba(255, 68, 68, 0.5);
+}
+
+.jam-error-code {
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: clamp(0.75rem, 2.5vw, 0.95rem);
+  color: #ff6666;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.jam-error-msg {
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  color: #cc8888;
+  margin-bottom: 1.5rem;
+}
+
+.jam-error-bar {
+  width: 100%;
+  max-width: 320px;
+  height: 24px;
+  margin: 0 auto 0.5rem;
+  background: #1a0a0a;
+  border: 2px solid #ff3333;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.jam-error-bar-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #cc0000, #ff4444);
+  transition: width 0.15s linear;
+}
+
+.jam-error-percent {
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 1rem;
+  color: #ff4444;
+  margin-bottom: 1.5rem;
+}
+
+.jam-error-footer {
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: clamp(0.7rem, 2vw, 0.85rem);
+  color: #886666;
+  letter-spacing: 0.2em;
+}
+
+.jam-error-scanline {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+  animation: jam-scanline 4s linear infinite;
+}
+
+@keyframes jam-scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.footer {
+  margin-top: 3rem;
+}
+
+.footer p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+  .countdown {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .countdown-item {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .countdown-value {
+    font-size: 1.75rem;
+  }
+}
