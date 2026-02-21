@@ -7,7 +7,7 @@
   var minutesEl = document.getElementById('minutes');
   var secondsEl = document.getElementById('seconds');
 
-  // ตี 3 วันที่ 23 ของเดือนนี้เท่านั้น พอถึงแล้วจบ (ไม่ข้ามเดือน)
+ 
   function getReleaseTime() {
     var now = new Date();
     return new Date(now.getFullYear(), now.getMonth(), 23, 3, 0, 0, 0);
@@ -55,7 +55,7 @@
   tick();
   setInterval(tick, 1000);
 
-  // เสียงลั้นๆ + จอแจม แล้วค่อยเข้าเกม
+
   var btnGame = document.getElementById('btn-game');
   var jamScreen = document.getElementById('jam-screen');
   var gameUrl = btnGame ? btnGame.getAttribute('data-game-url') : '';
@@ -159,3 +159,4 @@
     });
   }
 })();
+
