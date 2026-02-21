@@ -35,7 +35,7 @@ body {
   position: relative;
 }
 
-/* พื้นหลัง — ใส่ path รูปเกมที่ .game-bg */
+
 .bg-layer {
   position: fixed;
   inset: 0;
@@ -43,7 +43,7 @@ body {
   pointer-events: none;
 }
 
-/* พื้นหลัง: ใส่รูปเกมชื่อ game-bg.jpg ในโฟลเดอร์นี้ (ถ้าไม่มีจะใช้ gradient ด้านล่าง) */
+
 .game-bg {
   background: var(--bg-dark);
   background-image:
@@ -77,7 +77,7 @@ body {
   text-align: center;
 }
 
-/* โลโก้ */
+
 .logo-wrap {
   margin-bottom: 3rem;
 }
@@ -133,7 +133,7 @@ body {
   line-height: 1.6;
 }
 
-/* Countdown */
+
 .countdown-section {
   width: 100%;
   max-width: 720px;
@@ -192,7 +192,7 @@ body {
   color: var(--text-muted);
 }
 
-/* ปุ่มเข้าเว็บเกม — เปลี่ยน href ใน index.html เป็นลิงก์จริง */
+
 .btn-game-wrap {
   margin-top: 2.5rem;
 }
@@ -235,7 +235,7 @@ body {
   flex-shrink: 0;
 }
 
-/* จอแจม — สไตล์ error/ไวรัส เต็มจอ */
+
 .jam-screen {
   position: fixed;
   inset: 0;
@@ -253,7 +253,7 @@ body {
   visibility: visible;
 }
 
-/* จอ error แบบเต็มจอ เหมือนโดนไวรัส */
+
 .jam-error .jam-error-bg {
   position: absolute;
   inset: 0;
@@ -378,7 +378,7 @@ body {
   color: var(--text-muted);
 }
 
-/* Responsive */
+
 @media (max-width: 520px) {
   .countdown {
     grid-template-columns: repeat(2, 1fr);
@@ -393,3 +393,4 @@ body {
     font-size: 1.75rem;
   }
 }
+
