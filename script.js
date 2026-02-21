@@ -7,16 +7,10 @@
   var minutesEl = document.getElementById('minutes');
   var secondsEl = document.getElementById('seconds');
 
-  // ตี 3 ของวันที่ 23 (ถ้า 23 ผ่านไปแล้ว = 23 เดือนถัดไป)
+  // ตี 3 วันที่ 23 ของเดือนนี้เท่านั้น พอถึงแล้วจบ (ไม่ข้ามเดือน)
   function getReleaseTime() {
     var now = new Date();
-    var y = now.getFullYear();
-    var m = now.getMonth();
-    var release = new Date(y, m, 23, 3, 0, 0, 0);
-    if (release.getTime() <= now.getTime()) {
-      release = new Date(y, m + 1, 23, 3, 0, 0, 0);
-    }
-    return release;
+    return new Date(now.getFullYear(), now.getMonth(), 23, 3, 0, 0, 0);
   }
 
   function pad(n) {
