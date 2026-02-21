@@ -7,11 +7,16 @@
   var minutesEl = document.getElementById('minutes');
   var secondsEl = document.getElementById('seconds');
 
-  // ตี 3 พรุ่งนี้ (3:00 AM tomorrow, local time)
+  // ตี 3 ของวันที่ 23 (ถ้า 23 ผ่านไปแล้ว = 23 เดือนถัดไป)
   function getReleaseTime() {
     var now = new Date();
-    var tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 3, 0, 0, 0);
-    return tomorrow;
+    var y = now.getFullYear();
+    var m = now.getMonth();
+    var release = new Date(y, m, 23, 3, 0, 0, 0);
+    if (release.getTime() <= now.getTime()) {
+      release = new Date(y, m + 1, 23, 3, 0, 0, 0);
+    }
+    return release;
   }
 
   function pad(n) {
