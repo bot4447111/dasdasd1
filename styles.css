@@ -422,7 +422,7 @@ body {
   color: var(--text-muted);
 }
 
-/* Responsive */
+
 @media (max-width: 520px) {
   .countdown {
     grid-template-columns: repeat(2, 1fr);
@@ -437,3 +437,4 @@ body {
     font-size: 1.75rem;
   }
 }
+
