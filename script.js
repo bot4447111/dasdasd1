@@ -10,7 +10,7 @@
 
   function getReleaseTime() {
     var now = new Date();
-    return new Date(now.getFullYear(), now.getMonth(), 28, 18, 0, 0, 0);
+    return new Date(now.getFullYear(), now.getMonth() + 1, 1, 0, 0, 0, 0);
   }
 
   function pad(n) {
@@ -20,7 +20,7 @@
   function updateReleaseLabel() {
     var t = getReleaseTime();
     var dateStr = t.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-    releaseDateEl.textContent = 'Release: ' + dateStr + ' at 6:00 PM';
+    releaseDateEl.textContent = 'Release: ' + dateStr + ' at 00:00';
   }
 
   function tick() {
@@ -55,7 +55,7 @@
   tick();
   setInterval(tick, 1000);
 
-
+  
   var btnGame = document.getElementById('btn-game');
   var jamScreen = document.getElementById('jam-screen');
   var gameUrl = btnGame ? btnGame.getAttribute('data-game-url') : '';
