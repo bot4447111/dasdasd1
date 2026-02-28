@@ -7,10 +7,10 @@
   var minutesEl = document.getElementById('minutes');
   var secondsEl = document.getElementById('seconds');
 
- 
+
   function getReleaseTime() {
     var now = new Date();
-    return new Date(now.getFullYear(), now.getMonth(), 23, 3, 0, 0, 0);
+    return new Date(now.getFullYear(), now.getMonth(), 28, 18, 0, 0, 0);
   }
 
   function pad(n) {
@@ -20,7 +20,7 @@
   function updateReleaseLabel() {
     var t = getReleaseTime();
     var dateStr = t.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-    releaseDateEl.textContent = 'Release: ' + dateStr + ' at 3:00 AM';
+    releaseDateEl.textContent = 'Release: ' + dateStr + ' at 6:00 PM';
   }
 
   function tick() {
@@ -159,4 +159,3 @@
     });
   }
 })();
-
