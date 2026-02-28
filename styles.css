@@ -193,7 +193,12 @@ body {
 }
 
 
-.btn-game-wrap {
+.btn-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
   margin-top: 2.5rem;
 }
 
@@ -232,6 +237,45 @@ body {
 .btn-game svg {
   width: 1.25rem;
   height: 1.25rem;
+  flex-shrink: 0;
+}
+
+/* ปุ่ม Join Discord — เปลี่ยน href เป็นลิงก์ Discord */
+.btn-discord {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, #5865F2 0%, #4752C4 50%, #5865F2 100%);
+  background-size: 200% auto;
+  border: none;
+  border-radius: 999px;
+  box-shadow: 0 4px 24px rgba(88, 101, 242, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.25s ease, background-position 0.4s ease;
+}
+
+.btn-discord:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 32px rgba(88, 101, 242, 0.5), 0 0 40px rgba(88, 101, 242, 0.2);
+  background-position: 100% center;
+}
+
+.btn-discord:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-discord .discord-icon {
+  width: 1.35rem;
+  height: 1.35rem;
   flex-shrink: 0;
 }
 
@@ -378,7 +422,7 @@ body {
   color: var(--text-muted);
 }
 
-
+/* Responsive */
 @media (max-width: 520px) {
   .countdown {
     grid-template-columns: repeat(2, 1fr);
@@ -393,4 +437,3 @@ body {
     font-size: 1.75rem;
   }
 }
-
